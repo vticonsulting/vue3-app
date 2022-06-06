@@ -71,9 +71,9 @@ export default defineConfig({
           items: [
             { text: 'Getting Started', link: '/guide/' },
             { text: 'CSS', link: '/guide/css' },
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     },
     editLink: {
       repo: 'vitest-dev/vitest',

@@ -1,4 +1,4 @@
-# Vue 3 App
+# Vue 3 Ecosystem
 
 This template should help get you started developing with Vue 3 in Vite.
 

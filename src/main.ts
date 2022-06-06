@@ -1,12 +1,19 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
-import App from "./App.vue";
-import router from "./router";
+import App from './App.vue'
+import router from './router'
+import './assets/main.css'
+import { worker } from './mocks'
 
-const app = createApp(App);
+// Start a mock API server to handle auth requests
+worker.start({
+  onUnhandledRequest: 'bypass',
+})
 
-app.use(createPinia());
-app.use(router);
+const app = createApp(App)
 
-app.mount("#app");
+app.use(createPinia())
+app.use(router)
+
+app.mount('#app')
