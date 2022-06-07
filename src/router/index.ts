@@ -24,6 +24,68 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
     },
+    {
+      path: '/inspection/:id?',
+      props: true,
+      component: () => import('../views/Inspections/InspectionLayout.vue'),
+      children: [
+        {
+          path: '',
+          name: 'inspection',
+          component: () => import('../views/Inspections/InspectionView.vue'),
+        },
+        {
+          path: 'admin',
+          name: 'inspection-admin',
+          component: () => import('../views/Inspections/InspectionAdminView.vue'),
+        },
+        {
+          path: 'report-overview',
+          name: 'inspection-report-overview',
+          component: () => import('../views/Reports/ReportOverviewView.vue'),
+        },
+        {
+          path: 'details',
+          name: 'inspection-report-details',
+          component: () => import('../views/Reports/ReportDetailsView.vue'),
+        },
+        {
+          path: 'photos',
+          name: 'inspection-report-photos',
+          component: () => import('../views/Reports/ReportPhotosView.vue'),
+        },
+        {
+          path: 'scope',
+          name: 'inspection-report-scope',
+          component: () => import('../views/Reports/ReportScopeView.vue'),
+        },
+        {
+          path: 'summary',
+          name: 'inspection-report-summary',
+          component: () => import('../views/Reports/ReportSummaryView.vue'),
+        },
+        {
+          path: 'details',
+          name: 'inspection-details',
+          component: () => import('../views/Reports/ReportDetailsView.vue'),
+        },
+        {
+          path: 'photos',
+          name: 'inspection-photos',
+          component: () => import('../views/Reports/ReportPhotosView.vue'),
+        },
+        {
+          path: 'scope',
+          name: 'inspection-scope',
+          component: () => import('../views/Reports/ReportScopeView.vue'),
+        },
+        {
+          path: 'summary',
+          name: 'inspection-summary',
+          component: () => import('../views/Reports/ReportSummaryView.vue'),
+        },
+      ],
+    },
   ],
 })
 
