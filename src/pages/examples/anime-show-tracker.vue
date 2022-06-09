@@ -1,0 +1,227 @@
+<script setup>
+import { computed, effect, onMounted, ref } from 'vue'
+import { get, set } from 'https://unpkg.com/idb-keyval@5.0.2/dist/esm/index.js'
+import {
+  chooseDirectory,
+  chooseFile,
+  setupNewFile,
+  writeFile,
+} from '@/composables/useFileSystem'
+
+/**
+ * Reactive Data
+ */
+const directoryFiles = ref([])
+const hasSaveFile = ref(false)
+const newShow = ref('')
+const newShowStatus = ref('watching')
+const userFile = ref(undefined)
+const existingFile = ref(undefined)
+
+const animeShows = ref([])
+
+/**
+ * Computed Properties
+ */
+const currentlyWatchingShows = computed(() => {
+  return animeShows.value.filter(show => show.status === 'watching')
+})
+
+const watchedShows = computed(() => {
+  return animeShows.value.filter(show => show.status === 'watched')
+})
+
+/**
+ * Methods
+ */
+const addSaveFile = async () => {
+  const file = await setupNewFile()
+  if (file.status === 'success') {
+    hasSaveFile.value = true
+    userFile.value = file.fileHandle
+  }
+}
+
+const addShow = async () => {
+  // Update reactive data
+  animeShows.value.push({
+    show: newShow.value,
+    status: newShowStatus.value,
+  })
+
+  // Save data to the file
+  await writeFile(userFile.value, JSON.stringify(animeShows.value))
+
+  // Reset value
+  newShow.value = ''
+  newShowStatus.value = 'watching'
+}
+
+const chooseSaveDirectory = async () => {
+  directoryFiles.value = await chooseDirectory()
+  const saveFile = directoryFiles.value.find((file) => {
+    return file.name.includes('.json')
+  })
+  const imageFileList = directoryFiles.value.filter((file) => {
+    return file.name.includes('.jpeg')
+  })
+
+  if (saveFile) {
+    hasSaveFile.value = true
+    userFile.value = saveFile
+
+    const file = await userFile.value.getFile()
+    const fileContents = JSON.parse(await file.text())
+
+    animeShows.value = fileContents
+    hasSaveFile.value = true
+  }
+
+  if (imageFileList) {
+    imageFileList.forEach(async (file) => {
+      const existingShow = animeShows.value.findIndex((show) => {
+        return (
+          show.show.toLowerCase().replace(/ /g, '-')
+          === file.name.replace('-cover.jpeg', '')
+        )
+      })
+
+      if (existingShow > -1) {
+        const fileContents = await file.getFile()
+        const fileUrl = URL.createObjectURL(fileContents)
+        animeShows.value[existingShow].cover = fileUrl
+      }
+    })
+  }
+}
+
+const chooseSaveFile = async () => {
+  userFile.value = await chooseFile()
+  await set('saveFile', userFile.value)
+  const file = await userFile.value.getFile()
+  const fileContents = JSON.parse(await file.text())
+
+  animeShows.value = fileContents
+  hasSaveFile.value = true
+}
+
+const useLastSession = async () => {
+  userFile.value = existingFile.value
+
+  const permission = await userFile.value.requestPermission({
+    mode: 'readwrite',
+  })
+
+  if (permission === 'granted') {
+    const file = await userFile.value.getFile()
+    const fileContents = JSON.parse(await file.text())
+
+    animeShows.value = fileContents
+    hasSaveFile.value = true
+  }
+}
+
+/**
+ * Lifecycle Hooks
+ */
+onMounted(async () => {
+  const localSaveFile = await get('saveFile')
+
+  if (localSaveFile)
+    existingFile.value = localSaveFile
+})
+</script>
+
+<template>
+  <main>
+    <h1>Anime Show Tracker</h1>
+    <article v-if="hasSaveFile">
+      <form @submit.prevent>
+        <input v-model="newShow" type="text" placeholder="Show Name">
+        <select id="show-status" v-model="newShowStatus" name="show-status">
+          <option value="watching" selected>
+            Watching
+          </option>
+          <option value="watched">
+            Watched
+          </option>
+        </select>
+        <button @click="addShow">
+          Add Show
+        </button>
+      </form>
+      <section class="anime-list">
+        <h2>Currently Watching</h2>
+        <ul>
+          <li v-for="show in currentlyWatchingShows">
+            <img :src="show.cover">
+            {{ show.show }}
+          </li>
+        </ul>
+      </section>
+      <section class="anime-list">
+        <h2>Watched</h2>
+        <ul>
+          <li v-for="show in watchedShows">
+            <img :src="show.cover">
+            {{ show.show }}
+          </li>
+        </ul>
+      </section>
+    </article>
+    <article v-else>
+      <section style="border-bottom: 1px solid #222; padding-bottom: 30px">
+        <h2>Configure directory</h2>
+        <button @click="chooseSaveDirectory">
+          Choose an existing directory
+        </button>
+      </section>
+      <h2>Configure save file</h2>
+      <div v-if="existingFile">
+        <p>{{ existingFile.name }}</p>
+        <button style="margin-right: 10px" @click="useLastSession">
+          Use last session
+        </button>
+        <hr>
+      </div>
+      <button style="margin-right: 10px" @click="addSaveFile">
+        Create save file
+      </button>
+      <button @click="chooseSaveFile">
+        Choose an existing file
+      </button>
+    </article>
+  </main>
+</template>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  padding: 30px;
+}
+
+.anime-list {
+  text-align: left;
+}
+
+.anime-list ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.anime-list li {
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;
+  text-align: center;
+}
+
+.anime-list li img {
+  margin-bottom: 10px;
+}
+</style>

@@ -6,8 +6,7 @@ button:
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
 intro:
-  desc: Opinionated Vite Starter Template
-  dynamic-route: Demo of dynamic route
+  desc: Vue
   hi: Hi, {name}!
   aka: Also known as
   whats-your-name: What's your name?

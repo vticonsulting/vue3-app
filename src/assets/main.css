@@ -30,3 +30,433 @@ html.dark {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  [type='text'],
+  [type='email'],
+  [type='url'],
+  [type='password'],
+  [type='number'],
+  [type='date'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='search'],
+  [type='tel'],
+  [type='time'],
+  [type='week'],
+  [multiple],
+  textarea,
+  select {
+    @apply mt-1 w-full border-gray-300  focus:border-primary-500 focus:ring-primary-500;
+  }
+
+  [type='checkbox'],
+  [type='radio'] {
+    @apply w-5 h-5  focus:outline-none focus:ring-primary-500 text-primary-500;
+  }
+  [type='checkbox'] {
+    @apply rounded;
+  }
+  [type='radio'] {
+    @apply rounded-full;
+  }
+}
+
+.btn {
+  @apply bg-primary-500 hover:bg-primary-600 focus:bg-primary-600 text-white font-bold py-2 px-4 rounded;
+}
+
+/*  */
+.debug-baseline {
+  /* // Demonstrate the vertical rhythm at 12px */
+  background-image: linear-gradient(#eef 1px, transparent 1px);
+  background-size: 100% 12px;
+  background-repeat: repeat-y;
+}
+
+/*
+  import '@oruga-ui/oruga/dist/oruga.css'
+
+  .dropdown {
+    @apply inline-flex relative;
+  }
+
+  .dropdown-menu {
+    top: 100%;
+    min-width: 12em;
+    @apply absolute bg-white left-0 m-0 px-2 shadow-lg rounded-sm z-10;
+  }
+
+  .dropdown-item {
+    @apply relative block no-underline px-1 py-2 cursor-pointer;
+  }
+*/
+
+/*
+  import '@oruga-ui/oruga/dist/oruga-full.css'
+
+  .dropdown-menu {
+    min-width: 12em;
+    @apply bg-white m-0 px-2 shadow-lg rounded-sm z-10;
+  }
+
+  .dropdown-item {
+    @apply no-underline px-1 py-2 cursor-pointer;
+  }
+*/
+
+/* Button
+
+  .btn {
+    outline: none !important;
+    @apply font-bold py-2 px-4 bg-blue-500 text-white rounded;
+  }
+
+  .btn-rounded {
+    @apply rounded-full;
+  }
+
+  .btn-outlined-primary {
+    @apply bg-transparent text-blue-700 font-semibold py-2 px-4 border border-blue-500;
+  }
+
+  .btn-outlined-primary:hover {
+    @apply font-bold py-2 px-4 bg-blue-500 text-white rounded;
+  }
+
+  .btn-disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+*/
+
+/* Field
+
+  .field {
+    margin-top: 0.5rem
+  }
+
+  .field-label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+  }
+
+  .field-danger {
+    @apply text-red-500;
+  }
+*/
+
+/* Input
+
+  .input {
+    @apply appearance-none border w-full py-2 px-3 text-gray-500 leading-tight;
+  }
+
+  .input-danger {
+    @apply border-red-500;
+  }
+
+  .input-icon-right {
+    right: 0.5rem
+  }
+
+  .input-icon-danger {
+    @apply text-red-500;
+  }
+*/
+
+/* Dropdown
+
+  .dropdown {
+    @apply inline-flex relative;
+  }
+  .dropdown-menu {
+    min-width: 12em;
+    @apply bg-white shadow-lg rounded-sm ;
+  }
+  .dropdown-item {
+    @apply relative block no-underline py-2 cursor-pointer;
+  }
+
+  .dropdown-item-active {
+    @apply bg-blue-500;
+  }
+*/
+
+/* Checkbox
+
+  .checkbox {
+    @apply appearance-none bg-blue-500 border-blue-500;
+  }
+
+  .checkbox-checked {
+    @apply bg-blue-500;
+  }
+
+  .checkbox-label {
+    margin-left: 0.2rem;
+  }
+*/
+
+/* Steps
+
+  .step-marker {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+
+  .step-divider {
+    background: #b5b5b5;
+    content: " ";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    width: 100%;
+    height: 5px;
+    top: 35%;
+  }
+
+  .steps-nav-item-active .step-marker {
+    @apply text-blue-500 border-blue-500;
+  }
+
+  .steps-nav-item-active .step-divider {
+    background: none;
+    @apply bg-blue-500;
+  }
+
+  .steps-nav-item-previous .step-marker {
+    @apply bg-blue-500;
+  }
+
+  .steps-nav-item-previous .step-divider {
+    background: none;
+    @apply bg-blue-500;
+  }
+*/
+
+/**
+* Print stylesheet
+*/
+@media print {
+  /*
+    10px => 8pt - 2xs
+    12px => 9pt - xs
+    14px => 11pt - sm
+    16px => 12pt - sm
+    18px => 14pt - lg
+    20px => 15pt - xl
+    24px => 18pt - 2xl
+
+    font-size: 8pt => 6pt
+    font-size: 10pt => 8pt
+    font-size: 12pt => 9pt
+    font-size: 14pt; 11pt
+    font-size: 16pt; 12pt
+    font-size: 18pt; 14pt
+    font-size: 20pt; 15pt
+    line-height: 24pt; 18pt
+
+    Global Reset
+    10px => 8pt - 2xs
+    12px => 9pt - xs
+    14px => 11pt - sm
+    16px => 12pt - sm
+    18px => 14pt - lg
+    20px => 15pt - xl
+    24px => 18pt - 2xl
+
+    font-size: 8pt => 6pt
+    font-size: 10pt => 8pt
+    font-size: 12pt => 9pt
+    font-size: 14pt => 11pt
+    font-size: 16pt => 12pt
+    font-size: 18pt => 14pt
+    font-size: 20pt => 15pt
+    line-height: 24pt => 18pt
+  */
+
+  /*
+  body {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-family: "Courier New", Courier, monospace !important;
+    font-size: 10pt !important;
+    line-height: 1 !important;
+    margin-top: 12px !important;
+    color: black;
+    background: white;
+  }
+  */
+
+  .report {
+    width: 100%;
+    margin: 0;
+    float: none;
+    /* font-size: 10pt; */
+    line-height: 1;
+    color: black;
+    background: white;
+  }
+}
+
+@page {
+  margin: 5mm;
+}
+.new-page {
+  page-break-before: always;
+}
+
+.break-before {
+  page-break-before: always;
+}
+
+.break-after {
+  page-break-after: always;
+}
+
+@media print {
+  pre,
+  blockquote {
+    page-break-inside: avoid;
+  }
+
+  /* Hide Unwanted Elements */
+  body::before,
+  #logo,
+  .app-header,
+  img {
+    display: none;
+  }
+
+  body {
+    font-family: Georgia, serif;
+    font-size: 16pt;
+    line-height: 24pt;
+    background: none;
+    color: #000;
+  }
+
+  /* Layout Reset */
+  .info,
+  .final-result,
+  section,
+  footer {
+    background: none;
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: #000;
+  }
+
+  section:first-child::before {
+    border: none;
+  }
+
+  /* Specifics */
+  h1,h2,h3,h4,h5,h6 {
+    color: #000;
+    font-size: 24pt;
+    line-height: 30pt;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 50pt;
+    margin: 0 0 20pt;
+    text-align: center;
+    width: 100%;
+    transform: rotate(0);
+  }
+
+  h1 small {
+    font-size: 24pt;
+    color: #888;
+    margin: 0 0 10pt;
+  }
+
+  a::after {
+    content: " [" attr(href) "]";
+  }
+
+  a:link {
+    margin: 0;
+  }
+
+  a:link {
+    content: ' [" attr(href) "]';
+  }
+
+  footer a:link,
+  footer a:visited {
+    color: #000;
+    background: none;
+  }
+}
+
+.report article header {
+  /* font-size: 14pt; */
+}
+.report article section {
+  /* margin-top: 5mm; */
+}
+.report section header {
+  /* font-size: 12pt; */
+}
+.report {
+  width:  100%;
+  margin: 0;
+  float: none;
+}
+
+.report p {
+  /* margin-top: 5mm; */
+}
+
+.report header {
+  /* padding-bottom: 2.5mm; */
+  /* border-bottom: 1px solid black; */
+}
+
+.report h1 {
+  font-weight: 700;
+  /* font-size: 15pt; */
+}
+
+.report article {
+  margin-top: 5mm;
+}
+
+.report table {
+  /* margin-top: 5mm; */
+}
+
+.report th {
+  /* border-top: 1px solid black !important; */
+  /* border-bottom: 1px solid black !important; */
+  text-align: left;
+  /* padding: 0 2.5mm !important; */
+  /* font-weight: normal !important; */
+}
+
+.report td {
+  /* vertical-align: top; */
+  /* padding: 4mm 2.5mm 0 !important; */
+  font-size: 9pt !important;
+  line-height: 1 !important;
+}
+
+button {
+  /* display: none !important; */
+}
+
+table, thead, tbody, tr, td, th {
+  /* border: none !important; */
+  /* shadow: none !important; */
+  /* background: transparent !important; */
+}
+
+th {
+  white-space: nowrap !important;
+  /* background-color: white !important; */
+}

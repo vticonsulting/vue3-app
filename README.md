@@ -1,58 +1,41 @@
 # Vue 3 App
 
+Composables are, by far, the best way to organize business logic in your Vue 3 app
+
+They let you extract small pieces of logic into functions that you can easily reuse repeatedly. This makes your code easier to write and read.
+
+Since this way of writing Vue code is relatively new, you might be wondering what the best practices are when writing composables.
+
+First, though, we need to make sure we’re on the same page. So let me take a bit to explain what, exactly, a composable is.
+
+## What is a Composable?
+
+According to the Vue documentation, a composable is “a function that leverages Vue Composition API to encapsulate and reuse stateful logic”.
+
+[More...](https://www.vuemastery.com/courses/coding-better-composables/what-is-a-composable/)
+
 ## Features
 
--
+- Installable as library
+- Semantic Versioning
+- Automatic Change log / Release Notes
+- Deploy Previews
+- Backend Agnostic
+- Auto imported components, composables, modules, packages, icons
+- Example UI patterns: DataTables, Carousels, Dialog, Listbox, Radio Group, Tabs
+- [vite](https://www.youtube.com/watch?v=k4_duF1JDes)
 
-## Vue 3 Ecosystem
-
-This template should help get you started developing with Vue 3 in Vite.
-
-### Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-### Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-### Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-### Project Setup
-
-```sh
-npm install
-```
-
-#### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-#### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-#### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-#### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+```sql
+select
+  *
+from
+  ProjectServiceType pst
+  left join CompanyServiceType cst on cst.AvailableServiceTypeId = pst.AvailableServiceTypeId
+  and pst.CompanyId = cst.CompanyId
+where
+  1 = 1
+  and (
+    cst.AvailableServiceTypeId is null
+    or cst.CompanyId is null
+  )
 ```

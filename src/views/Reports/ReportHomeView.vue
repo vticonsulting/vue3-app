@@ -103,7 +103,7 @@ export default defineComponent({
                   </label>
                   <span class="text-sm text-gray-500">
                     Technician Name
-                    <br />
+                    <br>
                     678-987-6543
                   </span>
                   <span class="text-sm text-gray-500">technician@email.com</span>
@@ -124,7 +124,7 @@ export default defineComponent({
                   </label>
                   <span class="text-sm text-gray-500">
                     1547 BOULDER WALK DR SE
-                    <br />
+                    <br>
                     ATLANTA, Georgia 30316-3987
                   </span>
                 </div>
@@ -192,17 +192,16 @@ export default defineComponent({
             <div class="hidden sm:block">
               <nav class="flex space-x-4" aria-label="Tabs">
                 <a
-                  @click="setActiveTab(tab)"
                   v-for="(tab, i) in tabs"
                   :key="tab.name"
                   :href="tab.href"
+                  class="px-3 py-2 font-medium text-sm rounded-md"
                   :class="[
                     tab.current
                       ? 'bg-primary-100 text-primary-700'
                       : 'text-gray-500 hover:text-gray-700',
-                    'px-3 py-2 font-medium text-sm rounded-md',
-                  ]"
-                  :aria-current="tab.current ? 'page' : undefined"
+                  ]" :aria-current="tab.current ? 'page' : undefined"
+                  @click="setActiveTab(tab)"
                 >
                   {{ tab.name }}
                 </a>
@@ -213,7 +212,7 @@ export default defineComponent({
           <!-- ReportHeader -->
           <header class="ReportHeader">
             <div class="flex justify-between">
-              <div class="hidden Column" id="HeaderContainer">
+              <div id="HeaderContainer" class="hidden Column">
                 <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
                   <path
                     d="M25.1074 6C20.9532 7.42373 12.5157 10.3119 12 10.4746V18L25.1074 14.339L38 18V10.4746L25.1074 6Z"
@@ -228,8 +227,12 @@ export default defineComponent({
                 </svg>
               </div>
               <div class="flex-1 hidden column report-label">
-                <h1 class="hidden text-2xl font-extrabold">Ladder Assist</h1>
-                <div class="report-sub-label">Prepared by Hancock Claims Consultants</div>
+                <h1 class="hidden text-2xl font-extrabold">
+                  Ladder Assist
+                </h1>
+                <div class="report-sub-label">
+                  Prepared by Hancock Claims Consultants
+                </div>
                 <div class="report-claim-label">
                   <label for class="block text-xs tracking-wider uppercase">
                     Inspected by:
@@ -266,7 +269,9 @@ export default defineComponent({
                   <label class="block text-xs">Loss Location</label>
                   <span class="report-claim-values">1547 Boulder Walk Dr SE</span>
                 </div>
-                <div class="report-claim-values">Atlanta, GA 30316-3987</div>
+                <div class="report-claim-values">
+                  Atlanta, GA 30316-3987
+                </div>
               </div>
             </div>
           </header>
@@ -282,10 +287,14 @@ export default defineComponent({
                 class="w-full border rounded-lg shadow-lg aspect-video"
                 src="/assets/img/home.jpg"
                 alt="property"
-              />
-              <h1 class="mt-8 text-2xl font-bold text-primary-500">Property Overview</h1>
+              >
+              <h1 class="mt-8 text-2xl font-bold text-primary-500">
+                Property Overview
+              </h1>
               <div id="roof">
-                <h2 class="mt-4 text-lg font-semibold">Roof</h2>
+                <h2 class="mt-4 text-lg font-semibold">
+                  Roof
+                </h2>
                 <p class="mt-2">
                   The structure accessed was a
                   <span class="font-bold">two story single family dwelling</span>
@@ -295,45 +304,83 @@ export default defineComponent({
                   <span class="font-bold">Pitch</span>
                   .
                 </p>
-                <p class="mt-2">(Then either)</p>
-                <p class="mt-2">Damages to the following components were observed:</p>
-                <p class="mt-2">(OR)</p>
-                <p class="mt-2">There were no damages observed</p>
+                <p class="mt-2">
+                  (Then either)
+                </p>
+                <p class="mt-2">
+                  Damages to the following components were observed:
+                </p>
+                <p class="mt-2">
+                  (OR)
+                </p>
+                <p class="mt-2">
+                  There were no damages observed
+                </p>
               </div>
               <div id="elevation">
-                <h2 class="mt-4 text-lg font-semibold">Elevation</h2>
+                <h2 class="mt-4 text-lg font-semibold">
+                  Elevation
+                </h2>
                 <p class="mt-2">
                   A walk around inspection of all elevations was completed revealing the
                   presence of hardy plank siding, 5 inch downspouts,
                 </p>
-                <p class="mt-2">(Then either)</p>
-                <p class="mt-2">Damages to the following components were observed:</p>
-                <p class="mt-2">(OR)</p>
+                <p class="mt-2">
+                  (Then either)
+                </p>
+                <p class="mt-2">
+                  Damages to the following components were observed:
+                </p>
+                <p class="mt-2">
+                  (OR)
+                </p>
                 <p>There were no damages observed</p>
               </div>
               <div id="interior">
-                <h2 class="mt-4 text-lg font-semibold">Interior</h2>
+                <h2 class="mt-4 text-lg font-semibold">
+                  Interior
+                </h2>
                 <p class="mt-2">
                   An interior inspection was completed and the following areas were
                   documented with possible damage:
                 </p>
-                <p class="mt-2">(Then either)</p>
-                <p class="mt-2">Damages to the following components were observed:</p>
-                <p class="mt-2">(OR)</p>
-                <p class="mt-2">There were no damages observed</p>
+                <p class="mt-2">
+                  (Then either)
+                </p>
+                <p class="mt-2">
+                  Damages to the following components were observed:
+                </p>
+                <p class="mt-2">
+                  (OR)
+                </p>
+                <p class="mt-2">
+                  There were no damages observed
+                </p>
               </div>
               <div id="other-structures">
-                <h2 class="mt-4 text-lg font-semibold">Other Structures</h2>
+                <h2 class="mt-4 text-lg font-semibold">
+                  Other Structures
+                </h2>
                 <p class="mt-2">
                   Other Structures inspected included (FILL from PIF descriptors).
                 </p>
-                <p class="mt-2">(Then either)</p>
-                <p class="mt-2">Damages were found to: (Fill from PIF)</p>
-                <p class="mt-2">(OR)</p>
-                <p class="mt-2">There were no damages observed</p>
+                <p class="mt-2">
+                  (Then either)
+                </p>
+                <p class="mt-2">
+                  Damages were found to: (Fill from PIF)
+                </p>
+                <p class="mt-2">
+                  (OR)
+                </p>
+                <p class="mt-2">
+                  There were no damages observed
+                </p>
               </div>
               <div id="video-link">
-                <h2 class="mt-4 text-lg font-semibold">Video Link</h2>
+                <h2 class="mt-4 text-lg font-semibold">
+                  Video Link
+                </h2>
               </div>
             </section>
           </article>
@@ -344,7 +391,9 @@ export default defineComponent({
             id="inspection-summary"
             class="px-8"
           >
-            <h1 class="mt-8 text-2xl font-bold text-primary-500">Inspection Summary</h1>
+            <h1 class="mt-8 text-2xl font-bold text-primary-500">
+              Inspection Summary
+            </h1>
 
             <section
               id="roof-section"
@@ -354,10 +403,12 @@ export default defineComponent({
               <!--  Inspection Summary Section -->
               <div class="Section Row">
                 <div id="damage-container">
-                  <table class="mt-4 table-data" id="damage">
+                  <table id="damage" class="mt-4 table-data">
                     <thead>
                       <tr>
-                        <th class="text-left">Elevation/Direction</th>
+                        <th class="text-left">
+                          Elevation/Direction
+                        </th>
                         <th>Hail Damage +</th>
                         <th>Wind Damage</th>
                         <th>Other Damage</th>
@@ -398,8 +449,10 @@ export default defineComponent({
                 <!-- Roof Summary Section -->
                 <section style="width: 25%" class="column">
                   <div id="roof-summary-container">
-                    <h2 class="mt-8 text-lg font-medium table-label">Roof Summary</h2>
-                    <table class="mt-4 table-data" id="roof-summary">
+                    <h2 class="mt-8 text-lg font-medium table-label">
+                      Roof Summary
+                    </h2>
+                    <table id="roof-summary" class="mt-4 table-data">
                       <thead>
                         <tr>
                           <th>Category</th>
@@ -421,15 +474,15 @@ export default defineComponent({
                         </tr>
                         <tr>
                           <td>Pitch 0/12-6/12</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Pitch 7/12-9/12</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Pitch 10/12-12/12</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Stories</td>
@@ -437,11 +490,11 @@ export default defineComponent({
                         </tr>
                         <tr>
                           <td>One Story</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Two Story</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Valley Type</td>
@@ -461,7 +514,7 @@ export default defineComponent({
                         </tr>
                         <tr>
                           <td>Felt Paper</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Soffit Depth</td>
@@ -487,8 +540,10 @@ export default defineComponent({
                 <!-- Roof Components Section -->
                 <section style="width: 75%" class="Column">
                   <div id="roof-summary-container">
-                    <h2 class="mt-8 text-lg font-medium table-label">Roof Components</h2>
-                    <table class="mt-4 table-data" id="roof-component">
+                    <h2 class="mt-8 text-lg font-medium table-label">
+                      Roof Components
+                    </h2>
+                    <table id="roof-component" class="mt-4 table-data">
                       <thead>
                         <tr id="RoofComponentHeader">
                           <th>Roof Component</th>
@@ -511,28 +566,28 @@ export default defineComponent({
                           <td>1</td>
                           <td>0</td>
                           <td>No</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Drip Edge Eave</td>
                           <td>3LF</td>
                           <td>0</td>
                           <td>No</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Hvac Vent 4 Inch</td>
                           <td>1</td>
                           <td>0</td>
                           <td>Yes</td>
-                          <td></td>
+                          <td />
                         </tr>
                         <tr>
                           <td>Satellite Dish</td>
                           <td>1</td>
                           <td>1</td>
-                          <td></td>
-                          <td></td>
+                          <td />
+                          <td />
                         </tr>
                       </tbody>
                     </table>
@@ -544,24 +599,38 @@ export default defineComponent({
             <!-- Other Structures -->
             <section id="other-structures-section" class="w-full">
               <div id="other-structures-container" class="w-1/2">
-                <table class="mt-4 table-data" id="other-structures">
+                <table id="other-structures" class="mt-4 table-data">
                   <thead>
                     <tr>
-                      <th colspan="2" class="text-center">Other Structures - Name</th>
+                      <th colspan="2" class="text-center">
+                        Other Structures - Name
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td style="width: 40%">Roof</td>
-                      <td style="width: 60%; padding-left: 4px">Description</td>
+                      <td style="width: 40%">
+                        Roof
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Description
+                      </td>
                     </tr>
                     <tr>
-                      <td style="width: 40%">Elevation</td>
-                      <td style="width: 60%; padding-left: 4px">Description</td>
+                      <td style="width: 40%">
+                        Elevation
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Description
+                      </td>
                     </tr>
                     <tr>
-                      <td style="width: 40%">Interior</td>
-                      <td style="width: 60%; padding-left: 4px">Description</td>
+                      <td style="width: 40%">
+                        Interior
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Description
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -571,7 +640,7 @@ export default defineComponent({
             <!-- Non Storm Related Conditions -->
             <section id="non-storm-related-conditions-section" class="w-full">
               <div id="NonStormRelatedConditionsContainer" class="w-1/2">
-                <table class="mt-4 table-data" id="Interior">
+                <table id="Interior" class="mt-4 table-data">
                   <thead>
                     <tr>
                       <th colspan="2" class="text-center">
@@ -581,16 +650,28 @@ export default defineComponent({
                   </thead>
                   <tbody>
                     <tr>
-                      <td style="width: 40%">Blisters</td>
-                      <td style="width: 60%; padding-left: 4px">Direction</td>
+                      <td style="width: 40%">
+                        Blisters
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Direction
+                      </td>
                     </tr>
                     <tr>
-                      <td style="width: 40%">Thermal Cracking</td>
-                      <td style="width: 60%; padding-left: 4px">Direction</td>
+                      <td style="width: 40%">
+                        Thermal Cracking
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Direction
+                      </td>
                     </tr>
                     <tr>
-                      <td style="width: 40%">Nail Pop</td>
-                      <td style="width: 60%; padding-left: 4px">Direction</td>
+                      <td style="width: 40%">
+                        Nail Pop
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Direction
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -600,8 +681,10 @@ export default defineComponent({
             <!-- Interior Summary Section -->
             <section id="interior-summary-section" class="w-full">
               <div id="interior-container" class="w-1/2">
-                <h2 class="mt-8 text-lg font-medium table-label">Interior Summary</h2>
-                <table class="mt-4 table-data" id="interior">
+                <h2 class="mt-8 text-lg font-medium table-label">
+                  Interior Summary
+                </h2>
+                <table id="interior" class="mt-4 table-data">
                   <thead>
                     <tr>
                       <th>Location</th>
@@ -611,29 +694,45 @@ export default defineComponent({
                   </thead>
                   <tbody>
                     <tr>
-                      <td style="width: 30%">Additional One</td>
-                      <td style="width: 10%">3</td>
+                      <td style="width: 30%">
+                        Additional One
+                      </td>
+                      <td style="width: 10%">
+                        3
+                      </td>
                       <td style="width: 60%; text-align: left; padding-left: 4px">
                         Water stain hall bathroom
                       </td>
                     </tr>
                     <tr>
-                      <td style="width: 30%">Family Room</td>
-                      <td style="width: 10%">3</td>
+                      <td style="width: 30%">
+                        Family Room
+                      </td>
+                      <td style="width: 10%">
+                        3
+                      </td>
                       <td style="width: 60%; text-align: left; padding-left: 4px">
                         Water stain on ceiling
                       </td>
                     </tr>
                     <tr>
-                      <td style="width: 30%">Garage</td>
-                      <td style="width: 10%">3</td>
+                      <td style="width: 30%">
+                        Garage
+                      </td>
+                      <td style="width: 10%">
+                        3
+                      </td>
                       <td style="width: 60%; text-align: left; padding-left: 4px">
                         Test
                       </td>
                     </tr>
                     <tr>
-                      <td style="width: 30%">Master Bedroom</td>
-                      <td style="width: 10%">3</td>
+                      <td style="width: 30%">
+                        Master Bedroom
+                      </td>
+                      <td style="width: 10%">
+                        3
+                      </td>
                       <td style="width: 60%; text-align: left; padding-left: 4px">
                         Water stain on master bedroom ceiling
                       </td>
@@ -646,8 +745,10 @@ export default defineComponent({
             <!-- Collateral Section -->
             <section id="collateral-section">
               <div id="collateral-container" class="w-full">
-                <h2 class="mt-8 text-lg font-medium table-label">Collateral Section</h2>
-                <table class="mt-4 table-data" id="collateral">
+                <h2 class="mt-8 text-lg font-medium table-label">
+                  Collateral Section
+                </h2>
+                <table id="collateral" class="mt-4 table-data">
                   <thead>
                     <tr>
                       <th>Collateral</th>
@@ -662,10 +763,10 @@ export default defineComponent({
                     <tr v-for="n in 16">
                       <td>Fascia</td>
                       <td>Yes</td>
-                      <td></td>
+                      <td />
                       <td>6 In</td>
                       <td>Aluminum</td>
-                      <td></td>
+                      <td />
                     </tr>
                   </tbody>
                 </table>
@@ -674,7 +775,9 @@ export default defineComponent({
 
             <!-- Notes -->
             <section id="notes">
-              <h2 class="mt-8 text-lg font-medium table-label">Notes</h2>
+              <h2 class="mt-8 text-lg font-medium table-label">
+                Notes
+              </h2>
               <ul class="pl-8 mt-2 list-disc">
                 <li>
                   For all damages show totals and total amount damaged. IE, if window
@@ -700,11 +803,15 @@ export default defineComponent({
             id="report-details"
             class="px-8"
           >
-            <h1 class="mt-8 text-2xl font-bold text-primary-500">Report Details</h1>
+            <h1 class="mt-8 text-2xl font-bold text-primary-500">
+              Report Details
+            </h1>
 
             <!-- Roof Observations -->
             <section id="roof-observations-section">
-              <h2 class="mt-4 text-lg font-semibold">Roof Observations</h2>
+              <h2 class="mt-4 text-lg font-semibold">
+                Roof Observations
+              </h2>
               <section id="roof-observations-container" class="Section">
                 <p class="mt-2">
                   The risk assessed consists of a
@@ -782,19 +889,27 @@ export default defineComponent({
 
             <!--  -->
             <section id="storm-info-section">
-              <h2 class="mt-4 text-lg font-semibold">Storm Info</h2>
-              <p class="mt-2">NA</p>
+              <h2 class="mt-4 text-lg font-semibold">
+                Storm Info
+              </h2>
+              <p class="mt-2">
+                NA
+              </p>
             </section>
 
             <!--  -->
             <section id="non-storm-related-damage-section">
-              <h2 class="mt-4 text-lg font-semibold">Non Storm Related Damage</h2>
-              <p class="mt-2"></p>
+              <h2 class="mt-4 text-lg font-semibold">
+                Non Storm Related Damage
+              </h2>
+              <p class="mt-2" />
             </section>
 
             <!-- Roof - Hail Section -->
-            <section class="hidden" id="roof-hail-section">
-              <h2 class="mt-4 text-lg font-semibold">Roof - Hail</h2>
+            <section id="roof-hail-section" class="hidden">
+              <h2 class="mt-4 text-lg font-semibold">
+                Roof - Hail
+              </h2>
               <p class="mt-2">
                 Hail damage to a composition shingle roof system consists of bruising or
                 fracturing of the shingle mat. Bruising is most common at unsupported
@@ -815,8 +930,10 @@ export default defineComponent({
             </section>
 
             <!-- Roof - Wind Section -->
-            <section class="hidden" id="roof-wind-section">
-              <h2 class="mt-4 text-lg font-semibold">Roof - Wind</h2>
+            <section id="roof-wind-section" class="hidden">
+              <h2 class="mt-4 text-lg font-semibold">
+                Roof - Wind
+              </h2>
               <p class="mt-2">
                 Wind damage to an asphalt composition shingle consists of; creasing,
                 tearing, complete detachment, and impacts from wind driven objects. Wind
@@ -830,8 +947,10 @@ export default defineComponent({
             </section>
 
             <!-- Roof - Metal Accessory Items Section -->
-            <section class="hidden" id="roof-metal-accessory-items-section">
-              <h2 class="mt-4 text-lg font-semibold">Roof - Metal Accessory Items</h2>
+            <section id="roof-metal-accessory-items-section" class="hidden">
+              <h2 class="mt-4 text-lg font-semibold">
+                Roof - Metal Accessory Items
+              </h2>
               <p class="mt-2">
                 Metal roof accessory items rarely suffer functional damage from hail
                 impact. However, hail may cause aesthetic damage in the form of
@@ -843,8 +962,10 @@ export default defineComponent({
             </section>
 
             <!-- Out Building Damage Section -->
-            <section class="hidden" id="out-buiding-damage-section">
-              <h2 class="mt-4 text-lg font-semibold">Out Building Damage</h2>
+            <section id="out-buiding-damage-section" class="hidden">
+              <h2 class="mt-4 text-lg font-semibold">
+                Out Building Damage
+              </h2>
               <p class="mt-2">
                 This is information the outbuilding and the damage observed during the
                 inspection. Just some random dummy comment to help with the report
@@ -853,7 +974,9 @@ export default defineComponent({
 
             <!-- Addtional Summary -->
             <section id="additional-summary-section">
-              <h2 class="mt-4 text-lg font-semibold">Additional Summary</h2>
+              <h2 class="mt-4 text-lg font-semibold">
+                Additional Summary
+              </h2>
               <p class="mt-2">
                 This is an additional summary for this property inspection and contains
                 more information that provides a better picture of the data collected
@@ -867,7 +990,9 @@ export default defineComponent({
 
           <!-- Scope Sheet -->
           <article v-show="activeTab == 'scope-sheet'" id="scope-sheet" class="px-8">
-            <h1 class="mt-8 text-2xl font-bold text-primary-500">Scope Sheet</h1>
+            <h1 class="mt-8 text-2xl font-bold text-primary-500">
+              Scope Sheet
+            </h1>
             <!--
               Roof Diagram
               Make this Roof Diagram instead of Exterior and then have separate Elevations Diagram or Siding Diagram when applicable
@@ -897,7 +1022,9 @@ export default defineComponent({
 
           <!-- Photo Set -->
           <article v-show="activeTab == 'photo-set'" id="photo-set" class="px-8">
-            <h1 class="mt-8 text-2xl font-bold text-primary-500">Inspection Photos</h1>
+            <h1 class="mt-8 text-2xl font-bold text-primary-500">
+              Inspection Photos
+            </h1>
 
             <h2>1. Front of Risk</h2>
 

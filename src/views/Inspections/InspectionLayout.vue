@@ -15,7 +15,9 @@
           </router-link>
 
           <div class="flex items-center text-sm mt-1 space-x-8">
-            <router-link :to="{ name: 'inspection-admin' }">Admin</router-link>
+            <router-link :to="{ name: 'inspection-admin' }">
+              Admin
+            </router-link>
             <router-link :to="{ name: 'inspection-report-overview' }">
               Property Overview
             </router-link>
@@ -43,7 +45,7 @@
                 type="search"
                 placeholder="Project Number"
                 class="bg-white border rounded-lg shadow-lg border-primary-400"
-              />
+              >
             </div>
             <button class="space-x-2 h-button inline-flex items-center">
               <i-carbon-help class="w-6 h-6" />

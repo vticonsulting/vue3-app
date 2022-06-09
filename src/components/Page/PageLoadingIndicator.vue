@@ -1,0 +1,10 @@
+<template>
+  <svg
+    class="w-5 h-5 text-gray-500 animate-spin" role="img" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"
+  >
+    <path
+      fill="currentColor"
+      d="M12 10H6.78A11 11 0 0 1 27 16h2A13 13 0 0 0 6 7.68V4H4v8h8zm8 12h5.22A11 11 0 0 1 5 16H3a13 13 0 0 0 23 8.32V28h2v-8h-8z"
+    />
+  </svg>
+</template>

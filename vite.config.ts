@@ -24,7 +24,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
-import Unocss from 'unocss/vite'
+// import Unocss from 'unocss/vite'
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
 // https://vitejs.dev/config/
@@ -41,11 +41,12 @@ export default defineConfig({
 
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
-    Unocss(),
+    // Unocss(),
 
     // https://github.com/hannoeru/vite-plugin-pages#readme
     Pages({
       extensions: ['vue', 'md'],
+      exclude: ['**/components/*.vue'],
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts

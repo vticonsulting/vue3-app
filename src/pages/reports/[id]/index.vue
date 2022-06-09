@@ -1,0 +1,1118 @@
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+const tabs = [
+  { slug: 'property-overview', name: 'Property Overview', href: '/reports/1/overview', current: false },
+  { slug: 'inspection-summary', name: 'Inspection Summary', href: '/reports/1/summary', current: true },
+  { slug: 'report-details', name: 'Report Details', href: '/reports/1/details', current: false },
+  { slug: 'scope-sheet', name: 'Scope Sheet', href: '/reports/1/scope', current: false },
+  { slug: 'photo-set', name: 'Photo Set', href: '/reports/1/photos', current: false },
+]
+
+export default defineComponent({
+  data: () => ({
+    tabs,
+    activeTab: 'inspection-summary',
+    reportType: 'Direct Inspection Report',
+  }),
+  methods: {
+    setActiveTab(tab) {
+      this.tabs.forEach(tab => (tab.current = false))
+      tab.current = true
+      this.activeTab = tab.slug
+    },
+  },
+})
+</script>
+
+<template>
+  <div class="flex flex-col min-h-full">
+    <div class="hidden print:block">
+      Are you seriously trying to print this? It's secret!
+    </div>
+
+    <PageHeaderComponent />
+
+    <!-- MainLayout -->
+    <main class="flex-1">
+      <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div id="report-container" class="pb-16 bg-white border-4 rounded-lg">
+          <header class="p-4 border-b">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-primary-500">
+                <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
+                  <path
+                    d="M25.1074 6C20.9532 7.42373 12.5157 10.3119 12 10.4746V18L25.1074 14.339L38 18V10.4746L25.1074 6Z"
+                    fill="currentColor"
+                    stroke="currentColor"
+                  />
+                  <path
+                    d="M20.1653 20L12 22.2373V42H20.1653V34.5424H29.8347V42H38V22.2373L29.8347 20V27.2712H20.1653V20Z"
+                    fill="currentColor"
+                    stroke="currentColor"
+                  />
+                </svg>
+                <div class="flex flex-col">
+                  <span class="text-2xl font-extrabold leading-none whitespace-nowrap">
+                    {{ reportType }}
+                  </span>
+                  <span class="text-sm text-gray-500">
+                    Prepared by Hancock Claims Consultants
+                  </span>
+                </div>
+              </div>
+              <div class="flex flex-col text-right">
+                <label class="block tracking-widest uppercase text-2xs">
+                  Claim Number
+                </label>
+                <a href="#" class="text-sm text-gray-500 hover:underline">
+                  XF-4567-GFD980
+                </a>
+              </div>
+              <div class="grid hidden grid-cols-4 gap-4 space-x-8">
+                <div class="field">
+                  <label class="block text-xs tracking-wider uppercase">Carrier</label>
+                  <span class="report-claim-values">State Farm</span>
+                </div>
+                <div class="field">
+                  <label class="block text-xs tracking-wider uppercase">
+                    Claim Number
+                  </label>
+                  <span class="report-claim-values">9876543210</span>
+                </div>
+                <div class="field">
+                  <label class="block text-xs tracking-wider uppercase">
+                    Inspection Date
+                  </label>
+                  <span class="report-claim-values">10/06/2021 8:00 AM</span>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- Labels -->
+          <div class="hidden px-8">
+            <ul
+              role="list"
+              class="grid grid-cols-1 gap-5 mt-3 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            >
+              <li class="flex col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">
+                    Inspected by
+                  </label>
+                  <span class="text-sm text-gray-500">
+                    Technician Name
+                    <br>
+                    678-987-6543
+                  </span>
+                  <span class="text-sm text-gray-500">technician@email.com</span>
+                </div>
+              </li>
+              <li class="flex col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">
+                    Outside Temperature
+                  </label>
+                  <span class="text-sm text-gray-500">90 degrees</span>
+                </div>
+              </li>
+              <li class="flex col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">
+                    Loss Location
+                  </label>
+                  <span class="text-sm text-gray-500">
+                    1547 BOULDER WALK DR SE
+                    <br>
+                    ATLANTA, Georgia 30316-3987
+                  </span>
+                </div>
+              </li>
+              <li class="flex col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">
+                    Inspection Date / Time
+                  </label>
+                  <span class="text-sm text-gray-500">10/06/2021 8:00 AM</span>
+                </div>
+              </li>
+              <li class="flex col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">Carrier</label>
+                  <span class="text-sm text-gray-500">State Farm</span>
+                </div>
+              </li>
+              <li class="flex col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">Adjuster</label>
+                  <span class="text-sm text-gray-500">Jeff Ottinger</span>
+                </div>
+              </li>
+              <li class="flex hidden col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">
+                    Claim Number
+                  </label>
+                  <span class="text-sm text-gray-500">XF-4567-GFD980</span>
+                </div>
+              </li>
+              <li class="flex col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">Insured</label>
+                  <span class="text-sm text-gray-500">Janet Robertson</span>
+                </div>
+              </li>
+              <li class="flex col-span-1 rounded-md shadow-sm">
+                <div class="flex flex-col">
+                  <label class="block tracking-widest uppercase text-2xs">
+                    Present at Inspection
+                  </label>
+                  <span class="text-sm text-gray-500">Janet Robertson</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tabs -->
+          <div id="tabs" class="px-8 mt-4">
+            <div class="sm:hidden">
+              <label for="tabs" class="sr-only">Select a tab</label>
+              <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+              <select
+                id="tabs"
+                name="tabs"
+                class="block w-full border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              >
+                <option v-for="tab in tabs" :key="tab.name" :selected="tab.current">
+                  {{ tab.name }}
+                </option>
+              </select>
+            </div>
+            <div class="hidden sm:block">
+              <nav class="flex space-x-4" aria-label="Tabs">
+                <a
+                  v-for="(tab, i) in tabs"
+                  :key="tab.name"
+                  :href="tab.href"
+                  class="px-3 py-2 text-sm font-medium rounded-md"
+                  :class="[
+                    tab.current
+                      ? 'bg-primary-100 text-primary-700'
+                      : 'text-gray-500 hover:text-gray-700',
+                  ]" :aria-current="tab.current ? 'page' : undefined"
+                  @click="setActiveTab(tab)"
+                >
+                  {{ tab.name }}
+                </a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- ReportHeader -->
+          <header class="ReportHeader">
+            <div class="flex justify-between">
+              <div id="HeaderContainer" class="hidden Column">
+                <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
+                  <path
+                    d="M25.1074 6C20.9532 7.42373 12.5157 10.3119 12 10.4746V18L25.1074 14.339L38 18V10.4746L25.1074 6Z"
+                    fill="currentColor"
+                    stroke="currentColor"
+                  />
+                  <path
+                    d="M20.1653 20L12 22.2373V42H20.1653V34.5424H29.8347V42H38V22.2373L29.8347 20V27.2712H20.1653V20Z"
+                    fill="currentColor"
+                    stroke="currentColor"
+                  />
+                </svg>
+              </div>
+              <div class="flex-1 hidden column report-label">
+                <h1 class="hidden text-2xl font-extrabold">
+                  Ladder Assist
+                </h1>
+                <div class="report-sub-label">
+                  Prepared by Hancock Claims Consultants
+                </div>
+                <div class="report-claim-label">
+                  <label for class="block text-xs tracking-wider uppercase">
+                    Inspected by:
+                  </label>
+                  <span class="report-claim-values">Jane Doe Tel: 678-987-6543</span>
+                </div>
+                <div class="report-claim-label">
+                  <label for class="block text-xs tracking-wider uppercase">
+                    Inspection Date:
+                  </label>
+                  <span class="report-claim-values">10/06/2021 8:00 AM</span>
+                </div>
+              </div>
+              <div class="hidden column report-claim-label">
+                <div>
+                  <label class="block text-xs tracking-wider uppercase">Carrier</label>
+                  <span class="report-claim-values">State Farm</span>
+                </div>
+                <div>
+                  <label class="block text-xs tracking-wider uppercase">Adjuster</label>
+                  <span class="report-claim-values">Insurance Adjuster</span>
+                </div>
+                <div>
+                  <label class="block text-xs tracking-wider uppercase">
+                    Claim number
+                  </label>
+                  <span class="report-claim-values">GA-98-76543</span>
+                </div>
+                <div>
+                  <label class="block text-xs tracking-wider uppercase">Insured</label>
+                  <span class="report-claim-values">Vic Tolbert</span>
+                </div>
+                <div>
+                  <label class="block text-xs">Loss Location</label>
+                  <span class="report-claim-values">1547 Boulder Walk Dr SE</span>
+                </div>
+                <div class="report-claim-values">
+                  Atlanta, GA 30316-3987
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- PropertyOverview -->
+          <article
+            v-show="activeTab == 'property-overview'"
+            id="property-overview"
+            class="px-8 mt-8"
+          >
+            <section>
+              <img
+                class="w-full border rounded-lg shadow-lg aspect-video"
+                src="/assets/img/home.jpg"
+                alt="property"
+              >
+              <h1 class="mt-8 text-2xl font-bold text-primary-500">
+                Property Overview
+              </h1>
+              <div id="roof">
+                <h2 class="mt-4 text-lg font-semibold">
+                  Roof
+                </h2>
+                <p class="mt-2">
+                  The structure accessed was a
+                  <span class="font-bold">two story single family dwelling</span>
+                  with a
+                  <span class="font-bold">thirty year laminated shingle</span>
+                  on a predominately
+                  <span class="font-bold">Pitch</span>
+                  .
+                </p>
+                <p class="mt-2">
+                  (Then either)
+                </p>
+                <p class="mt-2">
+                  Damages to the following components were observed:
+                </p>
+                <p class="mt-2">
+                  (OR)
+                </p>
+                <p class="mt-2">
+                  There were no damages observed
+                </p>
+              </div>
+              <div id="elevation">
+                <h2 class="mt-4 text-lg font-semibold">
+                  Elevation
+                </h2>
+                <p class="mt-2">
+                  A walk around inspection of all elevations was completed revealing the
+                  presence of hardy plank siding, 5 inch downspouts,
+                </p>
+                <p class="mt-2">
+                  (Then either)
+                </p>
+                <p class="mt-2">
+                  Damages to the following components were observed:
+                </p>
+                <p class="mt-2">
+                  (OR)
+                </p>
+                <p>There were no damages observed</p>
+              </div>
+              <div id="interior">
+                <h2 class="mt-4 text-lg font-semibold">
+                  Interior
+                </h2>
+                <p class="mt-2">
+                  An interior inspection was completed and the following areas were
+                  documented with possible damage:
+                </p>
+                <p class="mt-2">
+                  (Then either)
+                </p>
+                <p class="mt-2">
+                  Damages to the following components were observed:
+                </p>
+                <p class="mt-2">
+                  (OR)
+                </p>
+                <p class="mt-2">
+                  There were no damages observed
+                </p>
+              </div>
+              <div id="other-structures">
+                <h2 class="mt-4 text-lg font-semibold">
+                  Other Structures
+                </h2>
+                <p class="mt-2">
+                  Other Structures inspected included (FILL from PIF descriptors).
+                </p>
+                <p class="mt-2">
+                  (Then either)
+                </p>
+                <p class="mt-2">
+                  Damages were found to: (Fill from PIF)
+                </p>
+                <p class="mt-2">
+                  (OR)
+                </p>
+                <p class="mt-2">
+                  There were no damages observed
+                </p>
+              </div>
+              <div id="video-link">
+                <h2 class="mt-4 text-lg font-semibold">
+                  Video Link
+                </h2>
+              </div>
+            </section>
+          </article>
+
+          <!-- Inspection Summary -->
+          <article
+            v-show="activeTab == 'inspection-summary'"
+            id="inspection-summary"
+            class="px-8"
+          >
+            <h1 class="mt-8 text-2xl font-bold text-primary-500">
+              Inspection Summary
+            </h1>
+
+            <section
+              id="roof-section"
+              class="mt-4"
+              style="page-break-before: always !important"
+            >
+              <!--  Inspection Summary Section -->
+              <div class="Section Row">
+                <div id="damage-container">
+                  <table id="damage" class="mt-4 table-data">
+                    <thead>
+                      <tr>
+                        <th class="text-left">
+                          Elevation/Direction
+                        </th>
+                        <th>Hail Damage +</th>
+                        <th>Wind Damage</th>
+                        <th>Other Damage</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Front Elevation/North</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>Back Elevation/South</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>Left Elevation/East</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>Right Elevation/West</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Roof Sections -->
+              <div id="roof-sections" class="Section Row">
+                <!-- Roof Summary Section -->
+                <section style="width: 25%" class="column">
+                  <div id="roof-summary-container">
+                    <h2 class="mt-8 text-lg font-medium table-label">
+                      Roof Summary
+                    </h2>
+                    <table id="roof-summary" class="mt-4 table-data">
+                      <thead>
+                        <tr>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Roof Type</td>
+                          <td>Flat</td>
+                        </tr>
+                        <tr>
+                          <td>Roof Material</td>
+                          <td>20 Year Comp.</td>
+                        </tr>
+                        <tr>
+                          <td>Ice and Water</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Pitch 0/12-6/12</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Pitch 7/12-9/12</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Pitch 10/12-12/12</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Stories</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>One Story</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Two Story</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Valley Type</td>
+                          <td>NA</td>
+                        </tr>
+                        <tr>
+                          <td>Universal Starter</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Rake</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Layers</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>Felt Paper</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Soffit Depth</td>
+                          <td>36 (in)</td>
+                        </tr>
+                        <tr>
+                          <td>Public Adjuster Present</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Insured Present</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Contractor Present</td>
+                          <td>No</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+
+                <!-- Roof Components Section -->
+                <section style="width: 75%" class="Column">
+                  <div id="roof-summary-container">
+                    <h2 class="mt-8 text-lg font-medium table-label">
+                      Roof Components
+                    </h2>
+                    <table id="roof-component" class="mt-4 table-data">
+                      <thead>
+                        <tr id="RoofComponentHeader">
+                          <th>Roof Component</th>
+                          <th>Quantity</th>
+                          <th>Qty Dmg</th>
+                          <th>Painted</th>
+                          <th>Material</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Box Vents</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td>No</td>
+                          <td>Metal</td>
+                        </tr>
+                        <tr>
+                          <td>Large Chimney Cap</td>
+                          <td>1</td>
+                          <td>0</td>
+                          <td>No</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Drip Edge Eave</td>
+                          <td>3LF</td>
+                          <td>0</td>
+                          <td>No</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Hvac Vent 4 Inch</td>
+                          <td>1</td>
+                          <td>0</td>
+                          <td>Yes</td>
+                          <td />
+                        </tr>
+                        <tr>
+                          <td>Satellite Dish</td>
+                          <td>1</td>
+                          <td>1</td>
+                          <td />
+                          <td />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              </div>
+            </section>
+
+            <!-- Other Structures -->
+            <section id="other-structures-section" class="w-full">
+              <div id="other-structures-container" class="w-1/2">
+                <table id="other-structures" class="mt-4 table-data">
+                  <thead>
+                    <tr>
+                      <th colspan="2" class="text-center">
+                        Other Structures - Name
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="width: 40%">
+                        Roof
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Description
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 40%">
+                        Elevation
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Description
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 40%">
+                        Interior
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Description
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- Non Storm Related Conditions -->
+            <section id="non-storm-related-conditions-section" class="w-full">
+              <div id="NonStormRelatedConditionsContainer" class="w-1/2">
+                <table id="Interior" class="mt-4 table-data">
+                  <thead>
+                    <tr>
+                      <th colspan="2" class="text-center">
+                        Non Storm Related Conditions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="width: 40%">
+                        Blisters
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Direction
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 40%">
+                        Thermal Cracking
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Direction
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 40%">
+                        Nail Pop
+                      </td>
+                      <td style="width: 60%; padding-left: 4px">
+                        Direction
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- Interior Summary Section -->
+            <section id="interior-summary-section" class="w-full">
+              <div id="interior-container" class="w-1/2">
+                <h2 class="mt-8 text-lg font-medium table-label">
+                  Interior Summary
+                </h2>
+                <table id="interior" class="mt-4 table-data">
+                  <thead>
+                    <tr>
+                      <th>Location</th>
+                      <th>SF</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="width: 30%">
+                        Additional One
+                      </td>
+                      <td style="width: 10%">
+                        3
+                      </td>
+                      <td style="width: 60%; text-align: left; padding-left: 4px">
+                        Water stain hall bathroom
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 30%">
+                        Family Room
+                      </td>
+                      <td style="width: 10%">
+                        3
+                      </td>
+                      <td style="width: 60%; text-align: left; padding-left: 4px">
+                        Water stain on ceiling
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 30%">
+                        Garage
+                      </td>
+                      <td style="width: 10%">
+                        3
+                      </td>
+                      <td style="width: 60%; text-align: left; padding-left: 4px">
+                        Test
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 30%">
+                        Master Bedroom
+                      </td>
+                      <td style="width: 10%">
+                        3
+                      </td>
+                      <td style="width: 60%; text-align: left; padding-left: 4px">
+                        Water stain on master bedroom ceiling
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- Collateral Section -->
+            <section id="collateral-section">
+              <div id="collateral-container" class="w-full">
+                <h2 class="mt-8 text-lg font-medium table-label">
+                  Collateral Section
+                </h2>
+                <table id="collateral" class="mt-4 table-data">
+                  <thead>
+                    <tr>
+                      <th>Collateral</th>
+                      <th>Damage</th>
+                      <th>Damage Amount</th>
+                      <th>Size</th>
+                      <th>Material</th>
+                      <th>Additional Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="n in 16">
+                      <td>Fascia</td>
+                      <td>Yes</td>
+                      <td />
+                      <td>6 In</td>
+                      <td>Aluminum</td>
+                      <td />
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- Notes -->
+            <section id="notes">
+              <h2 class="mt-8 text-lg font-medium table-label">
+                Notes
+              </h2>
+              <ul class="pl-8 mt-2 list-disc">
+                <li>
+                  For all damages show totals and total amount damaged. IE, if window
+                  screens damaged, show total present, then total damaged, same for all
+                  other components
+                </li>
+                <li>
+                  Same for siding and interior, total area amouts and then damages - have
+                  to where this populates directly to Scope Sheet and have separate Siding
+                  scope sheet.
+                </li>
+                <li>
+                  If we can include Prior repairs, non storm related conditions, and storm
+                  info on this sheet we can do away with report sheet.
+                </li>
+              </ul>
+            </section>
+          </article>
+
+          <!-- Report Details -->
+          <article
+            v-show="activeTab == 'report-details'"
+            id="report-details"
+            class="px-8"
+          >
+            <h1 class="mt-8 text-2xl font-bold text-primary-500">
+              Report Details
+            </h1>
+
+            <!-- Roof Observations -->
+            <section id="roof-observations-section">
+              <h2 class="mt-4 text-lg font-semibold">
+                Roof Observations
+              </h2>
+              <section id="roof-observations-container" class="Section">
+                <p class="mt-2">
+                  The risk assessed consists of a
+                  <span class="font-bold">1 story structure</span>
+                  with a
+                  <span class="font-bold">Flat style roof</span>
+                  with the following predominant pitches:
+                </p>
+                <ul class="pl-8 mt-2 list-disc">
+                  <li>Front Pitch: NA</li>
+                  <li>Left Pitch: NA</li>
+                  <li>Back Pitch: NA</li>
+                  <li>Right Pitch: NA</li>
+                </ul>
+                <p class="mt-2">
+                  The roof was comprised of a
+                  <span class="font-bold">20 Year Comp. shingle system</span>
+                  with and the following roof accessories:
+                </p>
+                <ul class="pl-8 mt-2 list-disc">
+                  <li>Hvac Vent 4 Inch</li>
+                </ul>
+                <p class="mt-2">
+                  A walk-around of the structure was conducted examining the siding,
+                  windows, window screens, fascia, gutters, and downspouts. This
+                  examination yielded the following damage:
+                </p>
+                <ul class="pl-8 mt-2 list-disc">
+                  <li>Fascia Damage</li>
+                </ul>
+                <p class="mt-2">
+                  The entirety of the roof system was inspected for wind related damages
+                  finding no damages. Hail test squares were conducted on each directional
+                  slope finding no hail strikes within nor to any other field shingles. No
+                  prior repairs were observed. Other areas of concern if any are noted in
+                  the additional summary.
+                </p>
+              </section>
+              <section id="roof-observations-container">
+                <p class="mt-2">
+                  The risk assessed consists of a 2 story structure with a Flat style roof
+                  with the following predominant pitches:
+                </p>
+                <ul class="pl-8 mt-2 list-disc">
+                  <li>Front Pitch: 1/12</li>
+                  <li>Left Pitch: 2/12</li>
+                  <li>Back Pitch: 3/12</li>
+                  <li>Right Pitch: 4/12</li>
+                </ul>
+                <p class="mt-2">
+                  The roof was comprised of a Laminate 30 Year shingle system with and the
+                  following roof accessories:
+                </p>
+                <ul class="pl-8 mt-2 list-disc">
+                  <li>Hvac Vent 6 Inch</li>
+                </ul>
+                <p class="mt-2">
+                  A walk-around of the structure was conducted examining the siding,
+                  windows, window screens, fascia, gutters, and downspouts.
+                </p>
+                <p class="mt-2">
+                  No sudden loss created damages. The entirety of the roof system was
+                  inspected for wind related damages finding no damages.
+                </p>
+                <p class="mt-2">
+                  Hail test squares were conducted on each directional slope finding no
+                  hail strikes within nor to any other field shingles.
+                </p>
+                <p class="mt-2">
+                  No prior repairs were observed. Other areas of concern if any are noted
+                  in the additional summary.
+                </p>
+              </section>
+            </section>
+
+            <!--  -->
+            <section id="storm-info-section">
+              <h2 class="mt-4 text-lg font-semibold">
+                Storm Info
+              </h2>
+              <p class="mt-2">
+                NA
+              </p>
+            </section>
+
+            <!--  -->
+            <section id="non-storm-related-damage-section">
+              <h2 class="mt-4 text-lg font-semibold">
+                Non Storm Related Damage
+              </h2>
+              <p class="mt-2" />
+            </section>
+
+            <!-- Roof - Hail Section -->
+            <section id="roof-hail-section" class="hidden">
+              <h2 class="mt-4 text-lg font-semibold">
+                Roof - Hail
+              </h2>
+              <p class="mt-2">
+                Hail damage to a composition shingle roof system consists of bruising or
+                fracturing of the shingle mat. Bruising is most common at unsupported
+                locations and usually requires manual examination to confirm that damage
+                has occurred to the shingle mat. Fracturing typically occurs at
+                unsupported locations and is readily evident. These conditions can promote
+                the absorption of moisture and subsequent deterioration of a shingle. Hail
+                damage to a roof is quantified by the analysis of "test squares" (10' x
+                10' Area). The purpose of the test squares is to determine the amount of
+                hail damage in a representative area of the roof. The test square results
+                are then applied to individual roof fields, or the roof as a whole, to
+                estimate the total damage incurred. Protocol calls for the examination of
+                four (4) test squares – One (1) facing each direction. Larger and/or more
+                complex roofs typically require additional test squares at the discretion
+                of the adjuster. Additionally, a cursory overview of the remainder of each
+                field is conducted to confirm the findings of the test squares.
+              </p>
+            </section>
+
+            <!-- Roof - Wind Section -->
+            <section id="roof-wind-section" class="hidden">
+              <h2 class="mt-4 text-lg font-semibold">
+                Roof - Wind
+              </h2>
+              <p class="mt-2">
+                Wind damage to an asphalt composition shingle consists of; creasing,
+                tearing, complete detachment, and impacts from wind driven objects. Wind
+                damage totals are acquired on a shingle damaged per slope basis. If wind
+                damage is present a brittleness "repairability" test is performed on each
+                slope that sustained damage. A brittleness test is performed by detaching
+                a shingle at the tar strip and lifting approximately three inches or a
+                40-degree angle. This would be the necessary shingle manipulation required
+                to feather and replace a damaged shingle.
+              </p>
+            </section>
+
+            <!-- Roof - Metal Accessory Items Section -->
+            <section id="roof-metal-accessory-items-section" class="hidden">
+              <h2 class="mt-4 text-lg font-semibold">
+                Roof - Metal Accessory Items
+              </h2>
+              <p class="mt-2">
+                Metal roof accessory items rarely suffer functional damage from hail
+                impact. However, hail may cause aesthetic damage in the form of
+                indentations. Rooftop penetrations can offer clear and permanent
+                indications of hailstone impacts, including hail size and direction of the
+                hail fall. Light gauge metal items will often suffer indentations even
+                when the roofing material escapes damage.
+              </p>
+            </section>
+
+            <!-- Out Building Damage Section -->
+            <section id="out-buiding-damage-section" class="hidden">
+              <h2 class="mt-4 text-lg font-semibold">
+                Out Building Damage
+              </h2>
+              <p class="mt-2">
+                This is information the outbuilding and the damage observed during the
+                inspection. Just some random dummy comment to help with the report
+              </p>
+            </section>
+
+            <!-- Addtional Summary -->
+            <section id="additional-summary-section">
+              <h2 class="mt-4 text-lg font-semibold">
+                Additional Summary
+              </h2>
+              <p class="mt-2">
+                This is an additional summary for this property inspection and contains
+                more information that provides a better picture of the data collected
+                during the visit to the property. This is just some dummy content and
+                probably will not make any sense to anyone reading it. I just want to have
+                more text to show up on the report as I try to refresh the look and feel
+                for 2022.
+              </p>
+            </section>
+          </article>
+
+          <!-- Scope Sheet -->
+          <article v-show="activeTab == 'scope-sheet'" id="scope-sheet" class="px-8">
+            <h1 class="mt-8 text-2xl font-bold text-primary-500">
+              Scope Sheet
+            </h1>
+            <!--
+              Roof Diagram
+              Make this Roof Diagram instead of Exterior and then have separate Elevations Diagram or Siding Diagram when applicable
+            -->
+
+            <!--
+              Interior Diagram - Living Room
+              (Hover Interior Product)
+            -->
+            <div class="mx-auto mt-8">
+              <svg
+                class="w-full h-64 text-gray-200 bg-white border-2 border-gray-300 border-dashed"
+                preserveAspectRatio="none"
+                stroke="currentColor"
+                fill="none"
+                viewBox="0 0 200 200"
+                aria-hidden="true"
+              >
+                <path
+                  vector-effect="non-scaling-stroke"
+                  stroke-width="2"
+                  d="M0 0l200 200M0 200L200 0"
+                />
+              </svg>
+            </div>
+          </article>
+
+          <!-- Photo Set -->
+          <article v-show="activeTab == 'photo-set'" id="photo-set" class="px-8">
+            <h1 class="mt-8 text-2xl font-bold text-primary-500">
+              Inspection Photos
+            </h1>
+
+            <h2>1. Front of Risk</h2>
+
+            <div class="mx-auto mt-8">
+              <svg
+                class="w-full h-64 text-gray-200 bg-white border-2 border-gray-300 border-dashed"
+                preserveAspectRatio="none"
+                stroke="currentColor"
+                fill="none"
+                viewBox="0 0 200 200"
+                aria-hidden="true"
+              >
+                <path
+                  vector-effect="non-scaling-stroke"
+                  stroke-width="2"
+                  d="M0 0l200 200M0 200L200 0"
+                />
+              </svg>
+            </div>
+
+            <p>
+              Have all pertinent info show in photo Have option to add additional
+              description to all photos if needed and populate onto photo set labeling as
+              well such as size and material when applicable. Also have freeform narrative
+              boxes from PIF populate under photo labeling for each corresponding area
+            </p>
+
+            <h2>2. Address</h2>
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+</template>
+
+<style type="postcss">
+#report-container {
+  max-width: 900px;
+}
+
+.table-data {
+  border-width: 0.5px !important;
+  border-style: solid;
+  border-color: #314b6f;
+  width: 100%;
+  font-size: 12px;
+  color: black;
+  font-weight: 500;
+}
+
+.table-data td {
+  text-align: center;
+  border: 1px solid #314b6f;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+.table-data th {
+  @apply bg-primary-500 border border-primary-500;
+  font-size: 14px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  width: 100px;
+  text-align: center;
+  padding: 4px;
+  padding: 0.25rem 0.5rem;
+}
+
+.table-data thead th:first-child {
+  text-align: left;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+.table-data tbody td:first-child {
+  text-align: left;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+.report-claim-label div {
+  padding-bottom: 2px;
+  text-align: right;
+}
+
+.report-claim-label {
+  font-size: 14px;
+  color: gray;
+  font-weight: 600;
+}
+</style>
