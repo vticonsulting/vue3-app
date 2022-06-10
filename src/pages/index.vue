@@ -5,6 +5,12 @@ import { Sortable } from 'sortablejs-vue3'
 import type { SortableOptions } from 'sortablejs'
 import { useMyMouse } from '@/use'
 
+// const myVar = import.meta.env.SUPABASE_URL
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
+console.log({ supabaseUrl, supabaseKey })
+console.log(supabaseUrl, supabaseKey)
+
 const { x, y } = useMyMouse()
 
 const elements = computed(() => {

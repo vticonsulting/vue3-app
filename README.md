@@ -1,5 +1,15 @@
 # Vue 3 App
 
+
+`<YOUR_CONFIG_URL>/auth/v1/callback`
+
+1. Request a user's GitHub identity
+
+`GET https://github.com/login/oauth/authorize`
+
+
+
+
 Composables are, by far, the best way to organize business logic in your Vue 3 app
 
 They let you extract small pieces of logic into functions that you can easily reuse repeatedly. This makes your code easier to write and read.
