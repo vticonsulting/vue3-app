@@ -13,7 +13,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs --port 8000",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "tailwind-config-viewer": "tailwind-config-viewer -o"
