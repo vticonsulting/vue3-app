@@ -3,9 +3,9 @@ import { version } from '../../package.json'
 
 import {
   contributing,
-  discord,
   font,
   github,
+  instagram,
   ogImage,
   ogUrl,
   releases,
@@ -37,7 +37,7 @@ export default defineConfig({
     ['link', { rel: 'mask-icon', href: '/logo.svg', color: '#ffffff' }],
     ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
   ],
-  lastUpdated: true,
+  lastUpdated: false,
   markdown: {
     theme: {
       light: 'vitesse-light',
@@ -46,6 +46,14 @@ export default defineConfig({
   },
   themeConfig: {
     nav: [
+      // {
+      //   text: 'Changelog',
+      //   link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md'
+      // },
+      {
+        text: 'Dev Notes',
+        link: 'http://localhost:3000/',
+      },
       { text: 'Guide', link: '/guide/' },
       { text: 'API', link: '/api/' },
       { text: 'Config', link: '/config/' },
@@ -76,25 +84,37 @@ export default defineConfig({
       ],
     },
     editLink: {
-      repo: 'vitest-dev/vitest',
+      repo: 'vticonsulting/vue3-app',
       branch: 'main',
       dir: 'docs',
       text: 'Suggest changes to this page',
     },
-    localeLinks: {
-      text: 'English',
-      items: [
-        { text: '简体中文', link: 'https://cn.vitest.dev' },
-      ],
-    },
+    // localeLinks: {
+    //   text: 'English',
+    //   items: [
+    //     {
+    //       text: '简体中文',
+    //       link: 'https://cn.vitest.dev',
+    //     },
+    //   ],
+    // },
     socialLinks: [
       { icon: 'twitter', link: twitter },
-      { icon: 'discord', link: discord },
+      { icon: 'instagram', link: instagram },
       { icon: 'github', link: github },
     ],
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2021-PRESENT Anthony Fu, Matías Capeletto and Vitest contributors',
+    },
+    algolia: {
+      appId: '8J64VVRP8K',
+      apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
+      indexName: 'vitepress',
+    },
+    carbonAds: {
+      code: 'CEBDT27Y',
+      placement: 'vuejsorg',
     },
   },
 })

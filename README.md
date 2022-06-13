@@ -1,5 +1,26 @@
 # Vue 3 App
 
+## Vitepress Theme
+
+- Nav
+- Sidebar
+- Prev Next Link
+- Edit Link
+- Last Updated
+- Layout
+- Homepage
+- Footer
+- Search
+- Carbon Ads
+
+[unplugin-vue-components] component "AppAlert"(/Users/victortolbert/Code/@localhost/vue3-app/src/components/Hancock/AppAlert.vue) has naming conflicts with other components, ignored.
+[unplugin-vue-components] component "AppLogo"(/Users/victortolbert/Code/@localhost/vue3-app/src/components/Hancock/AppLogo.vue) has naming conflicts with other components, ignored.
+[unplugin-vue-components] component "AppNavbar"(/Users/victortolbert/Code/@localhost/vue3-app/src/components/Hancock/AppNavbar.vue) has naming conflicts with other components, ignored.
+[unplugin-vue-components] component "PageHeader"(/Users/victortolbert/Code/@localhost/vue3-app/src/components/Page/PageHeader.vue) has naming conflicts with other components, ignored.
+[unplugin-vue-components] component "PageHeading"(/Users/victortolbert/Code/@localhost/vue3-app/src/components/Page/PageHeading.vue) has naming conflicts with other components, ignored.
+[unplugin-vue-components] component "PageWrapper"(/Users/victortolbert/Code/@localhost/vue3-app/src/components/Page/PageWrapper.vue) has naming conflicts with other components, ignored.
+Duplicated imports "useVModel", the one from "@vueuse/core" has been ignored
+
 
 `<YOUR_CONFIG_URL>/auth/v1/callback`
 

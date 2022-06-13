@@ -3,6 +3,16 @@ const colors = require('tailwindcss/colors')
 const svgToDataUri = require('mini-svg-data-uri')
 const { colors: appColors } = require('./app.config')
 
+// function withOpacityValue(variable) {
+//   return ({ opacityValue }) => {
+//     if (opacityValue === undefined) {
+//       return `rgb(var(${variable}))`
+//     }
+//     return `rgb(var(${variable}) / ${opacityValue})`
+//   }
+// }
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   plugins: [
@@ -12,6 +22,9 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
     // require('daisyui'),
+    // plugin(function({ addVariant }) {
+    //   addVariant('third', '&:nth-child(3)')
+    // })
   ],
   content: [
     './public/**/*.html',
@@ -19,10 +32,27 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // colors: ({ theme }) => ({
+      //   primary: theme('colors.blue.500'),
+      //   'primary-fade': theme('colors.blue.500 / 75%'),
+      // }),
       colors: {
         'cy-blue': '#4956e3',
         'gray': colors.stone,
         // primary: colors.stone,
+
+        // // Using modern `rgb`
+        // primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        // secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+
+        // // Using modern `hsl`
+        // primary: 'hsl(var(--color-primary) / <alpha-value>)',
+        // secondary: 'hsl(var(--color-secondary) / <alpha-value>)',
+
+        // // Using legacy `rgba`
+        // primary: 'rgba(var(--color-primary), <alpha-value>)',
+        // secondary: 'rgba(var(--color-secondary), <alpha-value>)',
+
         'primary': appColors.sanJuan,
         'secondary': appColors.tango,
         'accent': appColors.tango,

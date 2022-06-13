@@ -1,23 +1,31 @@
-<script>
-import { reactive } from 'vue'
-
-export default {
-  setup() {
-    const form = reactive({
-      salutation: '',
-      name: '',
-      email: '',
-    })
-
-    return {
-      form,
-    }
-  },
+<script setup lang="ts">
+const form = reactive({
+  salutation: '',
+  name: '',
+  email: '',
+})
+const items = ref([false, false, false])
+const allSelected = () => {
+  return items.value.every(item => item)
 }
 </script>
 
 <template>
   <div id="form">
+    <div v-for="(item, index) in items">
+      <div class="field">
+        <label>{{ index }}</label>
+        <input v-model="items[index]" type="checkbox">
+      </div>
+    </div>
+    <span class="tag">All selected?</span>
+    <span
+      class="tag" :class="[{
+        'is-success': allSelected,
+        'is-danger': !allSelected,
+      }]"
+    >{{ allSelected }}</span>
+
     <SalutationName
       v-model:salutation.capitalize="form.salutation"
       v-model:name.capitalize.reverse="form.name"

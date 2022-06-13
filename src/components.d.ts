@@ -105,7 +105,6 @@ declare module '@vue/runtime-core' {
     HancockLogoMark: typeof import('./components/Hancock/HancockLogoMark.vue')['default']
     Header: typeof import('./components/Hancock/project/inspection/admin/Header.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
-    ICarbonSun: typeof import('~icons/carbon/sun')['default']
     IconCommunity: typeof import('./components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./components/icons/IconEcosystem.vue')['default']

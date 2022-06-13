@@ -80,6 +80,8 @@ const { t } = useI18n()
 
 <template>
   <main>
+    <HelloWorld msg="Testing" />
+
     <Sortable
       :list="elements" item-key="id" :options="options" @change="logEvent" @choose="logEvent"
       @unchoose="logEvent" @start="logEvent" @end="logEvent" @add="logEvent" @update="logEvent" @sort="logEvent"
@@ -103,7 +105,102 @@ const { t } = useI18n()
       </template>
     </Sortable>
 
+    <div class="bg-[image:linear-gradient(to_right,theme(colors.red.500)_75%,theme(colors.red.500/25%))]">
+      Testing
+    </div>
+
     Mouse position is at: {{ x }}, {{ y }}
+
+    <button type="button" class="bg-indigo-500 hover:enabled:bg-indigo-400 disabled:opacity-75" disabled>
+      Processing...
+    </button>
+
+    <table class="border-separate border-spacing-2">
+      <thead>
+        <tr>
+          <th class="border border-slate-300">
+            State
+          </th>
+          <th class="border border-slate-300">
+            City
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-slate-300">
+            Indiana
+          </td>
+          <td class="border border-slate-300">
+            Indianapolis
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="[&:nth-child(3)]:py-0">
+      <!-- ... -->
+    </div>
+
+    <form>
+      <div>
+        <label for="email">Email</label>
+        <div>
+          <input id="email" type="text" required class="peer">
+          <div class="peer-optional:hidden">
+            Required
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="name">Name</label>
+        <div>
+          <input id="name" type="text" class="peer">
+          <div class="peer-optional:hidden">
+            Required
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <table class="border-separate border-spacing-0">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="sticky top-0 z-10 border-b border-gray-300">
+            Name
+          </th>
+          <th class="sticky top-0 z-10 border-b border-gray-300">
+            Email
+          </th>
+          <th class="sticky top-0 z-10 border-b border-gray-300">
+            Role
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white">
+        <tr>
+          <td class="border-b border-gray-200">
+            Courtney Henry
+          </td>
+          <td class="border-b border-gray-200">
+            courtney.henry@example.com
+          </td>
+          <td class="border-b border-gray-200">
+            Admin
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <dialog class="backdrop:bg-slate-900/50">
+      <form method="dialog">
+        <!-- ... -->
+        <button value="cancel">
+          Cancel
+        </button>
+        <button>Submit</button>
+      </form>
+    </dialog>
 
     <div action="" class="space-y-4">
       <div>

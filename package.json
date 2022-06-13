@@ -1,9 +1,9 @@
 {
   "name": "cypress",
   "version": "0.0.0",
-  "packageManager": "pnpm@7.1.9",
+  "packageManager": "pnpm@7.2.1",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite --open --port 8080",
     "build": "run-p type-check build-only",
     "preview": "vite preview --port 4173",
     "preview-https": "serve dist",
@@ -13,7 +13,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "docs:dev": "vitepress dev docs --port 8000",
+    "docs:dev": "vitepress dev docs --port 8081",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "tailwind-config-viewer": "tailwind-config-viewer -o"

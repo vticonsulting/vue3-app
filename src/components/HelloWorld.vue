@@ -1,13 +1,15 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   msg: string
 }>()
+
+const uppercase = computed(() => props.msg.toUpperCase())
 </script>
 
 <template>
   <div class="greetings">
     <h1 class="green">
-      {{ msg }}
+      Hello, {{ uppercase }}
     </h1>
     <h3>
       You’ve successfully created a project with
