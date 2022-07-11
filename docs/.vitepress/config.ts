@@ -17,7 +17,7 @@ import {
 import { teamMembers } from './contributors'
 
 export default defineConfig({
-  title: 'Exemplar Documentation',
+  title: 'DesignCode',
   description: 'Documentation.',
   head: [
     ['meta', { name: 'theme-color', content: '#ffffff' }],
@@ -105,7 +105,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2021-PRESENT Anthony Fu, Matías Capeletto and Vitest contributors',
+      copyright: 'Copyright © 2022-PRESENT Victor Tolbert',
     },
     algolia: {
       appId: '8J64VVRP8K',

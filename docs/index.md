@@ -2,13 +2,13 @@
 layout: home
 sidebar: false
 
-title: Exemplar
-titleTemplate: A blazing fast unit test framework powered by Vite
+title: Templates
+titleTemplate: A curated collection of light-weight modern ui templates for Vue apps
 
 hero:
-  name: Exemplar
-  text: Blazing Fast Unit Test Framework
-  tagline: A Vite-native unit test framework. It's fast!
+  name: DesignCode
+  text: Modern user interface elements
+  tagline: Light-weight UI components for custom designs
   image:
     src: /logo-shadow.svg
     alt: Exemplar
@@ -19,13 +19,6 @@ hero:
     - theme: alt
       text: Features
       link: /guide/features
-    - theme: alt
-      text: Why Exemplar?
-      link: /guide/why
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/Exemplar-dev/Exemplar
-
 features:
   - icon: 🖖
     title: Vite Powered

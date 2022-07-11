@@ -3,7 +3,7 @@
 /* Texts */
 export const vitestName = 'Vitest'
 export const vitestShortName = 'Vitest'
-export const vitestDescription = 'A blazing fast unit test framework powered by Vite'
+export const vitestDescription = 'A collection of modern ui elements powered by Vite'
 
 /* CDN fonts and styles */
 export const googleapis = 'https://fonts.googleapis.com'
